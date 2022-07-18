@@ -309,12 +309,54 @@ def experiment2(num_years):
     plt.show()
 
 
+def experiment3(initial_population, num_simulations, num_years):
+    """
+    This function does the same like experiment1(), with the only difference that it plots
+    every logistic growth curve in one plot.
+    DISCLAIMER: Because of lack of time, it was written really fast, by just defining four populations
+        instead of actually passing an array of growth rate parameters.
+
+    :param initial_population: An integer, representing the initial population-
+    :param num_simulations: An integer, representing the number of simulations we will perform,
+        with using num_simulations^2.
+    :param num_years: An integer, representing the number of years the growth function should be plotted.
+    """
+    index = []
+    carrying_capacity_array = []
+
+    carrying_capacity = get_carrying_capacity(num_simulations, num_simulations)
+
+    population1 = logistic_growth(0.05, initial_population, carrying_capacity, num_years)
+    population2 = logistic_growth(0.07, initial_population, carrying_capacity, num_years)
+    population3 = logistic_growth(0.08, initial_population, carrying_capacity, num_years)
+    population4 = logistic_growth(0.11, initial_population, carrying_capacity, num_years)
+    for elem in range(len(population1)):
+        index.append(elem + 2020)
+        carrying_capacity_array.append(carrying_capacity)
+
+    title = "Population Growth with rates r = [0.05, 0.07, 0.08, 0.11]"
+    carrying_capacity_str = "K = " + str(carrying_capacity)
+
+    plt.plot(index, population1, label="Population Growth with rate r = 0.05")
+    plt.plot(index, population2, label="Population Growth with rate r = 0.07")
+    plt.plot(index, population3, label="Population Growth with rate r = 0.08")
+    plt.plot(index, population4, label="Population Growth with rate r = 0.11")
+    plt.plot(index, carrying_capacity_array, color="r", label="Carrying Capacity")
+    plt.legend(loc="lower right", prop={'size': 9})
+    plt.title(title)
+    plt.xlabel("Year")
+    plt.ylabel("Number of Hippos")
+    plt.annotate(carrying_capacity_str, xy=(2030, carrying_capacity - 10), xytext=(2030, carrying_capacity - 400),
+                 arrowprops=dict(facecolor='red', shrink=0.05), )
+    plt.show()
+
+
 """
 Run experiment 1 to plot the logistic growth function for the hippo population,
 by passing the arguments growth_rate, initial_population, num_simulations and num_years like that:
 experiment1(growth_rate, initial_population, num_simulations, num_years)
 """
-#experiment1(0.05, 100, 100, 150)
+#experiment1(0.08, 100, 100, 150)
 
 
 """
@@ -322,3 +364,10 @@ Run experiment 2 to plot five random simulations over a couple of years,
 by passing the argument num_years like that: experiment2(num_years).
 """
 #experiment2(100)
+
+"""
+Run experiment 3 to plot the logistic growth function for the hippo population inside one plot,
+by passing the arguments initial_population, num_simulations and num_years like that:
+experiment1(initial_population, num_simulations, num_years)
+"""
+#experiment3(100, 100, 150)
