@@ -1,2 +1,2 @@
-# HippoPopulation
-Simulation of the hippo population in Columbia as an invasive species
+# Simulation of the hippo population in Columbia as an invasive species
+As an invasive species the Hippopotamus amphibius lives in Colombia along the Magdalena river. Compared to other Hippopotamus around the world the Colombians actually grow in their population size. My approach is now to simulate the population growth over the next years by considering an amount of important factors, which can be human-influenced or environmental. Using a logistic growth function, I try to predict how the amount of Hippopotamus amphibius increases. The key point in this simulation is to figure out the carrying capacity, so the maximum number of possible living species in a specific habitat.
